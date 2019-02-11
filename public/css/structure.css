@@ -81,3 +81,8 @@ a  {
 .traitVertical {
   border-left: 1px white solid;
 }
+
+
+img{
+    height: 100px;
+}
