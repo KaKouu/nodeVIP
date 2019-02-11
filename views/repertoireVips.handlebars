@@ -92,6 +92,7 @@ Cliquez sur une lettre :
 
 <div id="photosVIP">
     {{#each detailsVIPPhotos}}
-        <img src="/images/vip/{{this.photo}}">
+        <a href="/images/vip/{{this.photo}}" data-lightbox="VIP"><img src="/images/vip/{{this.photo}}"></a>
+
     {{/each}}
 </div>
