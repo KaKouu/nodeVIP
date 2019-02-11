@@ -53,12 +53,17 @@ Cliquez sur une lettre :
         {{#if this.finMariage}}
 
             <div id="mariageVIP2">
-                Mariage : <a href="/repertoire/vip/{{this.numero}}">{{this.prenom}} {{this.nom}}</a> ({{formatDate
+                Mariage : <a class="tooltip" href="/repertoire/vip/{{this.numero}}">{{this.prenom}} {{this.nom}}
+                <span><img
+                        src="/images/vip/{{this.photo}}"> <h3>{{this.prenom}} {{this.nom}}</h3>{{this.description}}</span></a>
+                ({{formatDate
                     this.dateMariage 'dddd D MMMM YYYY'}} --> {{formatDate this.finMariage 'dddd D MMMM YYYY'}}) Lieu
                 : {{this.lieu}}
             </div>
         {{else}}
-            Mariage : <a href="/repertoire/vip/{{this.numero}}">{{this.prenom}} {{this.nom}}</a> ({{formatDate
+            Mariage : <a class="tooltip" href="/repertoire/vip/{{this.numero}}">{{this.prenom}} {{this.nom}}<span><img
+                src="/images/vip/{{this.photo}}"> <h3>{{this.prenom}} {{this.nom}}</h3>{{this.description}}</span></a>
+            ({{formatDate
                 this.dateMariage 'dddd D MMMM YYYY'}} --> Aujourd'hui) Lieu : {{this.lieu}}
 
         {{/if}}
@@ -69,11 +74,11 @@ Cliquez sur une lettre :
 
 <div id="liaisonVIP">
     {{#each detailsVIPLiaison}}
-        Liaison : <a href="/repertoire/vip/{{this.numero}}">{{this.prenom}} {{this.nom}}</a> ({{formatDate
+        Liaison : <a class="tooltip" href="/repertoire/vip/{{this.numero}}">{{this.prenom}} {{this.nom}}<span><img
+            src="/images/vip/{{this.photo}}"> <h3>{{this.prenom}} {{this.nom}}</h3>{{this.description}}</span></a> ({{formatDate
             this.dateLiaison 'dddd D MMMM YYYY'}}) Raison de fin de liaison : {{this.motifFin}}
     {{/each}}
 </div>
-
 
 
 <div id="quiSuisVIP">

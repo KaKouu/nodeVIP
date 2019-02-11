@@ -58,8 +58,9 @@ module.exports.detailsVIPMariage= function(numero ,callback ) {
     db.getConnection(function(err, connexion) {
         if (!err) {
 
-            let sql = "SELECT v2.VIP_NUMERO as numero, v2.VIP_NOM as nom , v2.VIP_PRENOM as prenom, DATE_EVENEMENT as dateMariage, MARIAGE_LIEU as lieu ,MARIAGE_FIN as finMariage,MARIAGE_MOTIFFIN as motifFin " +
-                "FROM vip v join mariage m ON v.VIP_NUMERO=m.VIP_NUMERO JOIN vip v2 ON m.VIP_VIP_NUMERO=v2.VIP_NUMERO WHERE v.VIP_NUMERO =" + numero + "";
+            let sql = "SELECT v2.VIP_NUMERO as numero, v2.VIP_NOM as nom , v2.VIP_PRENOM as prenom, DATE_EVENEMENT as dateMariage, MARIAGE_LIEU as lieu ,MARIAGE_FIN as finMariage," +
+                "MARIAGE_MOTIFFIN as motifFin, PHOTO_ADRESSE as photo, v2.VIP_TEXTE as description FROM vip v join mariage m ON v.VIP_NUMERO=m.VIP_NUMERO " +
+                "JOIN vip v2 ON m.VIP_VIP_NUMERO=v2.VIP_NUMERO join photo p on v2.VIP_NUMERO=p.VIP_NUMERO WHERE p.PHOTO_NUMERO=1 and v.VIP_NUMERO =" + numero + "";
 
             //console.log(sql);
             connexion.query(sql, callback);
@@ -101,9 +102,9 @@ module.exports.detailsVIPLiaison= function(numero ,callback ) {
         if (!err) {
 
             let sql = "SELECT v2.VIP_NUMERO as numero, v2.VIP_NOM as nom , v2.VIP_PRENOM as prenom, DATE_EVENEMENT as " +
-                "dateLiaison, LIAISON_MOTIFFIN as motifFin " +
-                "FROM vip v join liaison l ON v.VIP_NUMERO=l.VIP_NUMERO JOIN vip v2 ON l.VIP_VIP_NUMERO=v2.VIP_NUMERO WHERE " +
-                "v.VIP_NUMERO =" + numero + "";
+                "dateLiaison, LIAISON_MOTIFFIN as motifFin, PHOTO_ADRESSE as photo, v2.VIP_TEXTE as description " +
+                "FROM vip v join liaison l ON v.VIP_NUMERO=l.VIP_NUMERO JOIN vip v2 ON l.VIP_VIP_NUMERO=v2.VIP_NUMERO join photo p on v2.VIP_NUMERO=p.VIP_NUMERO " +
+                "WHERE p.PHOTO_NUMERO=1 and v.VIP_NUMERO =" + numero + "";
 
             //console.log(sql);
             connexion.query(sql, callback);
