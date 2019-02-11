@@ -39,13 +39,36 @@ Cliquez sur une lettre :
         <br/>
         Nationalite : {{this.nationalite}}
         <br/>
-        Profession : #TODO
         <br/>
-
-
     </div>
+
+
 {{/each}}
 
+{{#if estActeur}}
+    <div id="acteurP">
+        Profession : Actrice
+    </div>
+    <div id="acteurFilm">
+        Principaux films : #TODO
+    </div>
+    <br/>
+
+{{/if}}
+
+
+
+{{#if estMannequin}}
+    <div id="mannequinP">
+        Profession : Mannequin
+    </div>
+    <div id="mannequinDefile">
+        Principaux Defile : #TODO
+    </div>
+    <br/>
+
+
+{{/if}}
 <div id="mariageVIP">
 
     {{#each detailsMariage}}
