@@ -35,16 +35,41 @@ Cliquez sur une lettre :
     <div id="detailVip">
         Nom : {{this.prenom}} {{this.nom}}
         <br/>
+        <br/>
         Naissance : {{formatDate this.naissance 'dddd D MMMM YYYY'}}
+        <br/>
         <br/>
         Nationalite : {{this.nationalite}}
         <br/>
-        Profession : #TODO
         <br/>
-
-
     </div>
 {{/each}}
+
+{{#if estActeur}}
+    <div id="acteurP">
+        Profession : Actrice
+    </div>
+    <div id="acteurFilm">
+        Principaux films : #TODO
+    </div>
+
+{{/if}}
+
+<br/>
+<br/>
+
+{{#if estMannequin}}
+    <div id="mannequinP">
+        Profession : Mannequin
+    </div>
+    <div id="mannequinDefile">
+        Principaux Defile : #TODO
+    </div>
+
+{{/if}}
+
+<br/>
+<br/>
 
 <div id="mariageVIP">
 
@@ -66,6 +91,8 @@ Cliquez sur une lettre :
 
 </div>
 
+<br/>
+<br/>
 
 <div id="liaisonVIP">
     {{#each detailsVIPLiaison}}
@@ -74,7 +101,8 @@ Cliquez sur une lettre :
     {{/each}}
 </div>
 
-
+<br/>
+<br/>
 
 <div id="quiSuisVIP">
 
@@ -84,6 +112,9 @@ Cliquez sur une lettre :
     {{/each}}
 
 </div>
+
+<br/>
+<br/>
 
 <div id="photosVIP">
     {{#each detailsVIPPhotos}}

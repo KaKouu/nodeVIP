@@ -111,3 +111,29 @@ module.exports.detailsVIPLiaison= function(numero ,callback ) {
         }
     });
 };
+
+module.exports.estActeur= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT m.VIP_NUMERO FROM acteur m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.estMannequin= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT m.VIP_NUMERO FROM mannequin m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
