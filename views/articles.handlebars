@@ -1,0 +1,26 @@
+Choisissez un VIP pour voir les articles le concernant
+
+<div id="listeVIP">
+    <h1>VIP</h1>
+    {{#each listeVIP}}
+
+
+
+        <a href="/articles/{{this.numero}}">{{this.prenom}} {{this.nom}}</a>
+        <br/>
+
+    {{/each}}
+</div>
+
+
+<div id="article">
+
+    {{#each articleVIP}}
+        <h4><u>{{this.prenom}} {{this.nom}}</u></h4>
+        <p>{{this.texte}}</p>
+        <br/>
+
+        <p id="date">Ajouté le {{formatDate this.date 'D MMMM YYYY'}}</p>
+        <a href="/repertoire/vip/{{this.numero}}"><u>voir sa fiche</u></a>
+    {{/each}}
+</div>
