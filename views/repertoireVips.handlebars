@@ -80,9 +80,12 @@ Cliquez sur une lettre :
     <div id="chanteurP">
         Profession : Chanteur
     </div>
-    <div id="chansonChante">
-        Principales chansons : #TODO
-    </div>
+    Principales chansons :
+    {{#each detailsChanteur}}
+        <div id="chansonChante">
+             {{this.titre}} ({{formatDate this.date 'MMMM YYYY'}}) {{this.maisonDisque}}
+        </div>
+    {{/each}}
     <br/>
 
 

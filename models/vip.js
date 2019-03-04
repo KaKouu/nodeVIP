@@ -152,19 +152,6 @@ module.exports.estChanteur= function(numero ,callback ) {
     });
 };
 
-module.exports.estMannequin= function(numero ,callback ) {
-    db.getConnection(function(err, connexion) {
-        if (!err) {
-
-            let sql = "SELECT m.VIP_NUMERO FROM mannequin m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
-
-            //console.log(sql);
-            connexion.query(sql, callback);
-            connexion.release();
-        }
-    });
-};
-
 module.exports.estRealisateur= function(numero ,callback ) {
     db.getConnection(function(err, connexion) {
         if (!err) {
@@ -214,6 +201,22 @@ module.exports.detailsMannequin= function(numero ,callback ) {
                 "FROM defiledans dd JOIN defile d ON dd.DEFILE_NUMERO=d.DEFILE_NUMERO JOIN couturier c ON d.VIP_NUMERO=c.VIP_NUMERO " +
                 "JOIN vip v ON v.VIP_NUMERO=c.VIP_NUMERO" +
                 " WHERE dd.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.detailsChanteur= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql ="SELECT ALBUM_TITRE as titre, ALBUM_DATE as date, MAISONDISQUE_NOM as maisonDisque " +
+                "FROM chanteur c JOIN composer co ON c.VIP_NUMERO=CO.VIP_NUMERO JOIN album a ON co.ALBUM_NUMERO=a.ALBUM_NUMERO  " +
+                "JOIN maisondisque m ON a.MAISONDISQUE_NUMERO=m.MAISONDISQUE_NUMERO" +
+                " WHERE c.VIP_NUMERO="+numero+"";
 
             //console.log(sql);
             connexion.query(sql, callback);
