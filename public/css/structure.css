@@ -86,3 +86,16 @@ a  {
 img{
     height: 100px;
 }
+
+
+#listeVIP{
+    float: right;
+    margin-right: 50px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+#article{
+    border: 1px solid black;
+    width: 1000px;
+}

@@ -25,7 +25,7 @@ Cliquez sur une lettre :
 </div>
 <br/>
 
-{{#each detailsVIP}}
+{{#each detailsVIPPrincipale}}
 
     <div id="detailVipIMG">
 
@@ -51,9 +51,15 @@ Cliquez sur une lettre :
 
 
 {{#if estActeur}}
-    <div id="acteurP">
-        Profession : Actrice
-    </div>
+    {{#ifCond this.sexe "==" 'M'}}
+        <div id="acteurP">
+            Profession : Acteur
+        </div>
+    {{else}}
+        <div id="acteurP">
+            Profession : Actrice
+        </div>
+    {{/ifCond}}
     <div id="acteurFilm">
         Principaux films : #TODO
     </div>
@@ -106,7 +112,8 @@ Cliquez sur une lettre :
 <div id="liaisonVIP">
     {{#each detailsVIPLiaison}}
         Liaison : <a class="tooltip" href="/repertoire/vip/{{this.numero}}">{{this.prenom}} {{this.nom}}<span><img
-            src="/images/vip/{{this.photo}}"> <h3>{{this.prenom}} {{this.nom}}</h3>{{this.description}}</span></a> ({{formatDate
+            src="/images/vip/{{this.photo}}"> <h3>{{this.prenom}} {{this.nom}}</h3>{{this.description}}</span></a>
+        ({{formatDate
             this.dateLiaison 'dddd D MMMM YYYY'}}) Raison de fin de liaison : {{this.motifFin}}
     {{/each}}
 </div>

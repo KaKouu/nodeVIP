@@ -79,6 +79,16 @@ module.exports.DetailsVip = function(request,response){
             function(callback){
                 model.detailsVIPLiaison(numData,function(err,result){ callback(null,result) });
             },
+
+            function(callback){
+                model.estActeur(numData,function(err,result){ callback(null,result) });
+            },
+
+            function(callback){
+                model.estMannequin(numData,function(err,result){ callback(null,result) });
+            },
+
+
         ],
 
         function (err,result){
@@ -88,14 +98,15 @@ module.exports.DetailsVip = function(request,response){
             }
 
             response.lettreVIP = result[0];
-            response.detailsVIP = result[1];
+            response.detailsVIPPrincipale = result[1];
             response.detailsMariage = result[2];
             response.detailsQuiSuisJe = result[3];
             response.detailsVIPPhotos = result[4];
             response.detailsVIPLiaison = result[5];
-            //console.log(result[1]);
-            //console.log(result[2]);
-            console.log(result[4]);
+            response.estActeur = result[6];
+            response.estMannequin = result[7];
+            console.log(result[6]);
+            console.log(result[1]);
             response.render('repertoireVips', response);
 
         }

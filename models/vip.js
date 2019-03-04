@@ -23,6 +23,17 @@ module.exports.lettreVIP = function(callback) {
     });
 };
 
+module.exports.listeVIP = function(callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql = "SELECT VIP_NUMERO as numero, VIP_PRENOM as prenom, VIP_NOM as nom from vip ORDER BY nom;";
+            // console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
 module.exports.detailsLettre = function(lettre ,callback ) {
     db.getConnection(function(err, connexion) {
         if (!err) {
@@ -42,7 +53,7 @@ module.exports.detailsVIPPrincipale = function(numero ,callback ) {
     db.getConnection(function(err, connexion) {
         if (!err) {
 
-            let sql = "SELECT VIP_NAISSANCE as naissance, NATIONALITE_NOM nationalite, p.VIP_NUMERO as numero, VIP_PRENOM as prenom, VIP_NOM as nom, PHOTO_ADRESSE as photo FROM vip v JOIN photo p ON p.VIP_NUMERO=v.VIP_NUMERO " +
+            let sql = "SELECT VIP_NAISSANCE as naissance, NATIONALITE_NOM nationalite, v.VIP_SEXE as sexe, p.VIP_NUMERO as numero, VIP_PRENOM as prenom, VIP_NOM as nom, PHOTO_ADRESSE as photo FROM vip v JOIN photo p ON p.VIP_NUMERO=v.VIP_NUMERO " +
                 "JOIN nationalite n ON v.NATIONALITE_NUMERO=n.NATIONALITE_NUMERO " +
                 "WHERE p.VIP_NUMERO="+numero+" " +
                 "and PHOTO_NUMERO=1;";
@@ -105,6 +116,46 @@ module.exports.detailsVIPLiaison= function(numero ,callback ) {
                 "dateLiaison, LIAISON_MOTIFFIN as motifFin, PHOTO_ADRESSE as photo, v2.VIP_TEXTE as description " +
                 "FROM vip v join liaison l ON v.VIP_NUMERO=l.VIP_NUMERO JOIN vip v2 ON l.VIP_VIP_NUMERO=v2.VIP_NUMERO join photo p on v2.VIP_NUMERO=p.VIP_NUMERO " +
                 "WHERE p.PHOTO_NUMERO=1 and v.VIP_NUMERO =" + numero + "";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.estActeur= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT m.VIP_NUMERO FROM acteur m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.estMannequin= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT m.VIP_NUMERO FROM mannequin m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.articleVIP= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT ARTICLE_RESUME as texte, ARTICLE_DATE_INSERT as date, v.VIP_NUMERO as numero, VIP_PRENOM as prenom, VIP_NOM as nom from " +
+                "article a join apoursujet aps on a.ARTICLE_NUMERO=aps.ARTICLE_NUMERO join vip v on aps.VIP_NUMERO=v.VIP_NUMERO where v.VIP_NUMERO="+ numero +"";
 
             //console.log(sql);
             connexion.query(sql, callback);
