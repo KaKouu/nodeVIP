@@ -182,7 +182,38 @@ module.exports.estCouturier= function(numero ,callback ) {
     db.getConnection(function(err, connexion) {
         if (!err) {
 
-            let sql = "SELECT m.VIP_NUMERO FROM mannequin m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+            let sql = "SELECT m.VIP_NUMERO FROM couturier m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.detailsActeur= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT FILM_TITRE as titre, FILM_DATEREALISATION as date, v.VIP_NUMERO as numRea, VIP_PRENOM as preRea,VIP_NOM as nomRea" +
+                " FROM acteur a JOIN joue j ON a.VIP_NUMERO=j.VIP_NUMERO JOIN film f ON j.FILM_NUMERO=f.FILM_NUMERO " +
+                "JOIN realisateur r ON r.VIP_NUMERO=f.VIP_NUMERO JOIN vip v ON v.VIP_NUMERO=r.VIP_NUMERO  WHERE a.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.detailsMannequin= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT DEFILE_LIEU as lieu, DEFILE_DATE as date, v.VIP_PRENOM as preCou, v.VIP_NOM as nomCou, v.VIP_NUMERO as numCou " +
+                "FROM defiledans dd JOIN defile d ON dd.DEFILE_NUMERO=d.DEFILE_NUMERO JOIN couturier c ON d.VIP_NUMERO=c.VIP_NUMERO " +
+                "JOIN vip v ON v.VIP_NUMERO=c.VIP_NUMERO" +
+                " WHERE dd.VIP_NUMERO="+numero+"";
 
             //console.log(sql);
             connexion.query(sql, callback);

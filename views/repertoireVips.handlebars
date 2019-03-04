@@ -49,25 +49,31 @@ Cliquez sur une lettre :
     <div id="acteurP">
         Profession : Actrice
     </div>
-    <div id="acteurFilm">
-        Principaux films : #TODO
-    </div>
+    Principaux films :
+    {{#each detailsActeur}}
+
+
+        <div id="acteurFilm">
+             {{this.titre}} ({{formatDate this.date 'MMMM YYYY'}}) de <a class="tooltip" href="/repertoire/vip/{{this.numRea}}">{{this.preRea}} {{this.nomRea}}</a>
+        </div>
+
+    {{/each}}
+
     <br/>
-
 {{/if}}
-
-
 
 {{#if estMannequin}}
     <div id="mannequinP">
         Profession : Mannequin
     </div>
-    <div id="mannequinDefile">
-        Principaux Defile : #TODO
-    </div>
+
+    Principaux Defile :
+    {{#each detailsMannequin}}
+        <div id="mannequinDefile">
+             {{this.lieu}} ({{formatDate this.date 'MMMM YYYY'}}) de <a class="tooltip" href="/repertoire/vip/{{this.numCou}}">{{this.preCou}} {{this.nomCou}}</a>
+        </div>
+    {{/each}}
     <br/>
-
-
 {{/if}}
 
 {{#if estChanteur}}
@@ -96,7 +102,7 @@ Cliquez sur une lettre :
 
 {{#if estCouturier}}
     <div id="couturierP">
-        Profession : Mannequin
+        Profession : Couturier
     </div>
     <div id="defileFait">
         Principaux Defile : #TODO
