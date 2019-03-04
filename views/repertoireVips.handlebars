@@ -69,6 +69,43 @@ Cliquez sur une lettre :
 
 
 {{/if}}
+
+{{#if estChanteur}}
+    <div id="chanteurP">
+        Profession : Chanteur
+    </div>
+    <div id="chansonChante">
+        Principales chansons : #TODO
+    </div>
+    <br/>
+
+
+{{/if}}
+
+{{#if estRealisateur}}
+    <div id="realisateurP">
+        Profession : Réalisateur
+    </div>
+    <div id="filmRealise">
+        Principaux Films : #TODO
+    </div>
+    <br/>
+
+
+{{/if}}
+
+{{#if estCouturier}}
+    <div id="couturierP">
+        Profession : Mannequin
+    </div>
+    <div id="defileFait">
+        Principaux Defile : #TODO
+    </div>
+    <br/>
+
+
+{{/if}}
+
 <div id="mariageVIP">
 
     {{#each detailsMariage}}
@@ -94,7 +131,6 @@ Cliquez sur une lettre :
 
 </div>
 
-
 <div id="liaisonVIP">
     {{#each detailsVIPLiaison}}
         Liaison : <a class="tooltip" href="/repertoire/vip/{{this.numero}}">{{this.prenom}} {{this.nom}}<span><img
@@ -103,7 +139,6 @@ Cliquez sur une lettre :
             this.dateLiaison 'dddd D MMMM YYYY'}}) Raison de fin de liaison : {{this.motifFin}}
     {{/each}}
 </div>
-
 
 <div id="quiSuisVIP">
 

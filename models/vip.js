@@ -138,3 +138,55 @@ module.exports.estMannequin= function(numero ,callback ) {
         }
     });
 };
+
+module.exports.estChanteur= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT m.VIP_NUMERO FROM chanteur m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.estMannequin= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT m.VIP_NUMERO FROM mannequin m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.estRealisateur= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT m.VIP_NUMERO FROM realisateur m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.estCouturier= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql = "SELECT m.VIP_NUMERO FROM mannequin m JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO WHERE v.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
