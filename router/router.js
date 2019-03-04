@@ -21,6 +21,7 @@ module.exports = function(app){
     app.get('/repertoire/:lettreRouter', VipController.DetailsLettre);
     app.get('/repertoire/vip/:numeroRouter', VipController.DetailsVip);
 
+// articles
     app.get('/articles', ArticleController.DetailsVip);
     app.get('/articles/:numeroRouter', ArticleController.DetailsArticle);
 
