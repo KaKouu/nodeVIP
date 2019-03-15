@@ -46,9 +46,17 @@ Cliquez sur une lettre :
 {{/each}}
 
 {{#if estActeur}}
-    <div id="acteurP">
-        Profession : Actrice
-    </div>
+
+    {{#ifCond  estHomme.0.sexe "===" 'M'}}
+         <div id="acteurP">
+                Profession : Acteur
+         </div>
+    {{else}}
+        <div id="acteurP">
+            Profession : Actrice
+        </div>
+    {{/ifCond}}
+
     Principaux films :
     {{#each detailsActeur}}
 
@@ -56,10 +64,9 @@ Cliquez sur une lettre :
         <div id="acteurFilm">
              {{this.titre}} ({{formatDate this.date 'MMMM YYYY'}}) de <a class="tooltip" href="/repertoire/vip/{{this.numRea}}">{{this.preRea}} {{this.nomRea}}</a>
         </div>
-
     {{/each}}
-
     <br/>
+
 {{/if}}
 
 {{#if estMannequin}}
@@ -77,9 +84,17 @@ Cliquez sur une lettre :
 {{/if}}
 
 {{#if estChanteur}}
-    <div id="chanteurP">
-        Profession : Chanteur
-    </div>
+
+    {{#ifCond  estHomme.0.sexe "===" 'M'}}
+        <div id="acteurP">
+            Profession : Chanteur
+        </div>
+    {{else}}
+        <div id="acteurP">
+            Profession : Chanteuse
+        </div>
+    {{/ifCond}}
+
     Principales chansons :
     {{#each detailsChanteur}}
         <div id="chansonChante">
@@ -92,9 +107,18 @@ Cliquez sur une lettre :
 {{/if}}
 
 {{#if estRealisateur}}
-    <div id="realisateurP">
-        Profession : Réalisateur
-    </div>
+
+    {{#ifCond  estHomme.0.sexe "===" 'M'}}
+        <div id="acteurP">
+            Profession : Réalisateur
+        </div>
+    {{else}}
+        <div id="acteurP">
+            Profession : Réalisatrice
+        </div>
+    {{/ifCond}}
+
+
     Principaux Films :
 
     {{#each detailsRealisateur}}
@@ -107,9 +131,16 @@ Cliquez sur une lettre :
 {{/if}}
 
 {{#if estCouturier}}
-    <div id="couturierP">
-        Profession : Couturier
-    </div>
+
+    {{#ifCond  estHomme.0.sexe "===" 'M'}}
+        <div id="acteurP">
+            Profession : Couturier
+        </div>
+    {{else}}
+        <div id="acteurP">
+            Profession : Couturière
+        </div>
+    {{/ifCond}}
 
     Principaux Defile :
     {{#each detailsCouturier}}

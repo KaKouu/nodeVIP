@@ -293,3 +293,17 @@ module.exports.detailsCouturier= function(numero ,callback ) {
         }
     });
 };
+
+module.exports.estHomme= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql ="SELECT VIP_SEXE as sexe FROM vip p " +
+                "WHERE VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
