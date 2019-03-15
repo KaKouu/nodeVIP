@@ -224,3 +224,17 @@ module.exports.detailsChanteur= function(numero ,callback ) {
         }
     });
 };
+
+module.exports.detailsRealisateur= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql ="SELECT FILM_TITRE as titre, FILM_DATEREALISATION as date FROM realisateur r " +
+                "JOIN film f ON r.VIP_NUMERO=f.VIP_NUMERO WHERE f.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};

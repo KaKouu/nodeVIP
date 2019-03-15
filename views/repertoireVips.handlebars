@@ -83,7 +83,7 @@ Cliquez sur une lettre :
     Principales chansons :
     {{#each detailsChanteur}}
         <div id="chansonChante">
-             {{this.titre}} ({{formatDate this.date 'MMMM YYYY'}}) {{this.maisonDisque}}
+
         </div>
     {{/each}}
     <br/>
@@ -95,9 +95,14 @@ Cliquez sur une lettre :
     <div id="realisateurP">
         Profession : Réalisateur
     </div>
-    <div id="filmRealise">
-        Principaux Films : #TODO
-    </div>
+    Principaux Films :
+
+    {{#each detailsRealisateur}}
+        <div id="filmRealise">
+            {{this.titre}} ({{formatDate this.date 'MMMM YYYY'}})
+        </div>
+    {{/each}}
+
     <br/>
 
 
@@ -114,6 +119,7 @@ Cliquez sur une lettre :
 
 
 {{/if}}
+
 
 <div id="mariageVIP">
 
