@@ -1,1 +1,11 @@
-<h1> Mettre ici l'album photo des stars </h1>
+
+<div id="listePhoto">
+
+    {{#each listePhotos}}
+        <img src="/images/vip/{{this.photo}}">
+    {{/each}}
+</div>
+
+<div>
+    <input type="button" value="Next">
+</div>
