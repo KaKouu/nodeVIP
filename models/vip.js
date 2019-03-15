@@ -279,3 +279,17 @@ module.exports.detailsRealisateur= function(numero ,callback ) {
         }
     });
 };
+
+module.exports.detailsCouturier= function(numero ,callback ) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+
+            let sql ="SELECT DEFILE_LIEU as lieu, DEFILE_DATE as date FROM defile r " +
+                "JOIN couturier f ON r.VIP_NUMERO=f.VIP_NUMERO WHERE f.VIP_NUMERO="+numero+"";
+
+            //console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};

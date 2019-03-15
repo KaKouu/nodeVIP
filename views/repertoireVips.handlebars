@@ -104,17 +104,19 @@ Cliquez sur une lettre :
     {{/each}}
 
     <br/>
-
-
 {{/if}}
 
 {{#if estCouturier}}
     <div id="couturierP">
         Profession : Couturier
     </div>
-    <div id="defileFait">
-        Principaux Defile : #TODO
-    </div>
+
+    Principaux Defile :
+    {{#each detailsCouturier}}
+        <div id="defileFait">
+            {{this.lieu}} ({{formatDate this.date 'MMMM YYYY'}})
+        </div>
+    {{/each}}
     <br/>
 
 
