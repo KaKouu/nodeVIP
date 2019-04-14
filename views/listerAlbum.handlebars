@@ -1,11 +1,53 @@
-
-<div id="listePhoto">
-
+<div class="listePhotos">
     {{#each listePhotos}}
-        <img src="/images/vip/{{this.photo}}">
+        {{#ifCond @index '<' '12'}}
+            <a name="vip" href="/album/{{this.numero}}">
+                <img src="/images/vip/{{this.photo}}" id="{{@index}}">
+            </a>
+
+        {{/ifCond}}
+        {{#ifCond @index '>=' '12'}}
+            <a name="vip" href="/album/{{this.numero}}">
+                <img src="/images/vip/{{this.photo}}" id="{{@index}}" style="display : none">
+            </a>
+        {{/ifCond}}
     {{/each}}
+    <div>
+        <input type="text" style="display : none" id="debut">
+        <button id="deb" value="Debut"> Début</button>
+        <button id="precedent" value="Precedent"> Precedent</button>
+        <button id="suivant" value="Suivant"> Suivant</button>
+        <button id="fin" value="Fin"> Fin</button>
+    </div>
+
+    {{#each maxVIP}}<input type="text" id="maxVIP" value="{{this.maxVIP}}" style="display: none">{{/each}}
+</div>
+<br/><br/>
+<div class="albumUnVip">
+    {{#each detailAlbum}}
+        {{#ifCond @index '<' '1'}}
+            <p>{{this.nom}} {{this.prenom}}</p>
+
+            <button id="avant" value="Avant"> << </button>
+            <img src = "/images/vip/{{this.photo}}" width="100px">
+
+            <button id="apres" value="Apres"> >> </button>
+            <fieldset>
+                <legend>Commentaire</legend>
+                <p>{{this.commentaire}}</p>
+            </fieldset>
+        {{/ifCond}}
+        {{#ifCond @index '>=' '1'}}
+            <div style= "display : none" id="{{@index}} r">
+                <p>{{this.nom}} {{this.prenom}}</p>
+                <img src = "/images/vip/{{this.photo}}" width="100px">
+                <fieldset>
+                    <legend>Commentaire</legend>
+                    <p>{{this.commentaire}}</p>
+            </div>
+            </fieldset>
+        {{/ifCond}}
+    {{/each}}
+    <input type="text" style = "display : none" id="debut2">
 </div>
 
-<div>
-    <input type="button" value="Next">
-</div>

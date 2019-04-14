@@ -85,6 +85,7 @@ a  {
 
 img{
     height: 100px;
+    width: 100px;
 }
 
 
@@ -96,6 +97,19 @@ img{
 }
 
 #article{
-    border: 1px solid black;
     width: 1000px;
+}
+
+#commentaire{
+    border: black solid 1px;
+    width: 500px;
+    margin: auto;
+}
+#pcommentaire{
+    margin-right: 400px;
+}
+
+.listePhotos{
+    width: 40%;
+    float: right;
 }
